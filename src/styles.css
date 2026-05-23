@@ -61,6 +61,14 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@theme {
+  --font-serif: 'Instrument Serif', serif;
+  --font-sans: 'Inter', sans-serif;
+  --color-paper: #fdfcfb;
+  --color-ink: #1c1c1c;
+  --color-accent: #c2410c;
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
