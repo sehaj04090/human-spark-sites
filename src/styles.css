@@ -62,11 +62,13 @@
 }
 
 @theme {
-  --font-serif: 'Instrument Serif', serif;
+  --font-display: 'Space Grotesk', sans-serif;
   --font-sans: 'Inter', sans-serif;
-  --color-paper: #fdfcfb;
-  --color-ink: #1c1c1c;
-  --color-accent: #c2410c;
+  --color-void: #07030f;
+  --color-midnight: #0d0820;
+  --color-violet: #6d28d9;
+  --color-pulse: #a855f7;
+  --color-glow: #c084fc;
 }
 
 :root {

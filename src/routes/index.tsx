@@ -1,174 +1,274 @@
 import { createFileRoute } from "@tanstack/react-router";
-import deskImg from "@/assets/desk.jpg";
-import workAtelier from "@/assets/work-atelier.jpg";
-import workEcho from "@/assets/work-echo.jpg";
+import heroImg from "@/assets/hero-servers.webp";
+import logo from "@/assets/pulsecompute-logo.webp";
 
 export const Route = createFileRoute("/")({
-  component: Index,
   head: () => ({
     meta: [
-      { title: "Pulse Compute — Websites made by hands, not prompts" },
+      { title: "PulseCompute — Quality Hosting & Affordable Pricing" },
       {
         name: "description",
         content:
-          "Pulse Compute is Sehaj's boutique web design studio. Hand-crafted, editorial websites that reject the sterile uniformity of AI-generated design.",
+          "PulseCompute delivers blazing-fast, reliable hosting at prices that actually make sense. Game servers, VPS, and web hosting engineered for performance.",
       },
-      { property: "og:title", content: "Pulse Compute — Websites made by hands, not prompts" },
+      { property: "og:title", content: "PulseCompute — Quality Hosting & Affordable Pricing" },
       {
         property: "og:description",
-        content:
-          "A boutique studio building digital spaces that breathe, glitch, and feel human.",
+        content: "Blazing-fast, reliable hosting at prices that make sense.",
+      },
+      { property: "og:image", content: heroImg },
+    ],
+    links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap",
       },
     ],
   }),
+  component: HomePage,
 });
 
-function Index() {
+function HomePage() {
   return (
-    <div className="min-h-screen bg-paper text-ink font-sans selection:bg-accent/10 selection:text-accent">
-      <link
-        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500&display=swap"
-        rel="stylesheet"
-      />
+    <div className="min-h-screen bg-[var(--color-void)] text-white font-sans overflow-x-hidden">
+      {/* Ambient glow */}
+      <div className="pointer-events-none fixed inset-0 -z-10">
+        <div className="absolute top-[-20%] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[var(--color-violet)] opacity-30 blur-[160px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] h-[500px] w-[500px] rounded-full bg-[var(--color-pulse)] opacity-20 blur-[140px]" />
+      </div>
 
-      <nav className="flex justify-between items-center px-8 py-10 max-w-7xl mx-auto">
-        <div className="text-xl font-medium tracking-tight">Pulse Compute</div>
-        <div className="flex gap-12 text-sm font-medium opacity-80">
-          <a href="#work" className="hover:opacity-100 transition-opacity underline decoration-accent/30 underline-offset-4">
-            Work
-          </a>
-          <a href="#manifesto" className="hover:opacity-100 transition-opacity">
-            Manifesto
-          </a>
-          <a href="#contact" className="hover:opacity-100 transition-opacity">
-            Contact
-          </a>
-        </div>
-      </nav>
-
-      <header className="px-8 pt-20 pb-32 max-w-7xl mx-auto">
-        <div className="max-w-4xl">
-          <h1 className="font-serif text-7xl md:text-9xl leading-[0.85] tracking-tight mb-12">
-            Websites made <span className="italic text-accent">by hands</span>, not prompts.
-          </h1>
-          <p className="text-xl md:text-2xl leading-relaxed max-w-2xl opacity-90">
-            Sehaj's Pulse Compute is a boutique studio rejecting the sterile uniformity of AI design. We build digital spaces that breathe, glitch, and feel human.
-          </p>
-        </div>
+      {/* Nav */}
+      <header className="relative z-10 flex items-center justify-between px-6 py-5 md:px-12">
+        <a href="#" className="flex items-center gap-2">
+          <img src={logo} alt="PulseCompute" className="h-9 w-9 object-contain" />
+          <span className="font-display text-lg font-semibold tracking-wide">
+            PULSECOMPUTE
+          </span>
+        </a>
+        <nav className="hidden gap-8 text-sm text-white/70 md:flex">
+          <a href="#services" className="hover:text-white transition">Services</a>
+          <a href="#pricing" className="hover:text-white transition">Pricing</a>
+          <a href="#features" className="hover:text-white transition">Features</a>
+          <a href="#contact" className="hover:text-white transition">Contact</a>
+        </nav>
+        <a
+          href="#pricing"
+          className="rounded-full bg-white/10 px-5 py-2 text-sm font-medium backdrop-blur-sm hover:bg-white/20 transition"
+        >
+          Get Started
+        </a>
       </header>
 
-      <section className="px-8 mb-32">
-        <div className="max-w-7xl mx-auto">
-          <img
-            src={deskImg}
-            alt="A designer's desk with charcoal sketches, vintage Leica, and open art books"
-            width={1440}
-            height={704}
-            className="w-full aspect-[21/9] object-cover outline-1 -outline-offset-1 outline-ink/5 rounded-sm"
-          />
-          <p className="mt-4 text-[10px] font-medium uppercase tracking-[0.2em] text-ink/40">
-            The Artifact No. 01 — Studio, somewhere quiet.
-          </p>
-        </div>
-      </section>
-
-      <section id="manifesto" className="px-8 py-32 border-t border-ink/5 bg-stone-50">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-16">
-          <div className="md:col-span-5">
-            <h2 className="font-serif text-5xl leading-tight">The Uncanny Valley ends here.</h2>
-          </div>
-          <div className="md:col-span-7 space-y-8">
-            <p className="text-xl leading-relaxed opacity-80">
-              The modern web is suffering from a crisis of sameness. Every grid is perfect, every gradient is generated, and every word is predictable. We find beauty in the intentional imperfection.
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 pt-8">
-              <div>
-                <span className="block text-xs uppercase tracking-widest text-accent mb-4 font-bold">
-                  Tactile UI
-                </span>
-                <p className="text-sm leading-relaxed">
-                  Interfaces inspired by print layouts, physical texture, and rhythmic spacing that guides the eye naturally.
-                </p>
-              </div>
-              <div>
-                <span className="block text-xs uppercase tracking-widest text-accent mb-4 font-bold">
-                  Coded by Hand
-                </span>
-                <p className="text-sm leading-relaxed">
-                  No block builders. Every line of CSS is authored to serve the specific narrative of your brand.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="work" className="px-8 py-32 max-w-7xl mx-auto">
-        <div className="flex justify-between items-end mb-16">
-          <h3 className="font-serif text-5xl md:text-6xl">Recent Work</h3>
-          <span className="text-xs uppercase tracking-[0.2em] font-medium opacity-40">
-            Selected Archives 2024
+      {/* Hero */}
+      <section className="relative px-6 pt-12 pb-20 md:px-12 md:pt-20 md:pb-32">
+        <div className="mx-auto max-w-5xl text-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white/70 backdrop-blur-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-glow)] animate-pulse" />
+            99.99% Uptime
           </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
-          <div className="group cursor-pointer">
-            <img
-              src={workAtelier}
-              alt="L'Atelier — minimalist brutalist architecture site"
-              loading="lazy"
-              width={800}
-              height={1000}
-              className="w-full aspect-[4/5] object-cover outline-1 -outline-offset-1 outline-ink/5 rounded-sm mb-6 transition-transform duration-700 group-hover:scale-[0.98]"
-            />
-            <h4 className="text-2xl font-serif mb-2">L'Atelier</h4>
-            <p className="text-sm opacity-60 italic">Creative Direction & Development</p>
-          </div>
-
-          <div className="group cursor-pointer md:pt-24">
-            <img
-              src={workEcho}
-              alt="Echo Systems — typography-focused magazine layout"
-              loading="lazy"
-              width={800}
-              height={1000}
-              className="w-full aspect-[4/5] object-cover outline-1 -outline-offset-1 outline-ink/5 rounded-sm mb-6 transition-transform duration-700 group-hover:scale-[0.98]"
-            />
-            <h4 className="text-2xl font-serif mb-2">Echo Systems</h4>
-            <p className="text-sm opacity-60 italic">Visual Identity & Product Design</p>
-          </div>
-        </div>
-      </section>
-
-      <footer id="contact" className="px-8 py-20 border-t border-ink/5">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
-          <div className="max-w-md">
-            <h5 className="font-serif text-4xl mb-6">Ready to pulse?</h5>
-            <p className="opacity-60 mb-8">
-              We take on four projects per year to ensure every pixel is placed with intent.
-            </p>
+          <h1 className="font-display mt-8 text-4xl font-semibold leading-[1.05] tracking-tight md:text-7xl">
+            Quality Hosting <span className="text-[var(--color-glow)]">&</span>{" "}
+            <br className="hidden md:block" />
+            Affordable Pricing.
+          </h1>
+          <p className="mx-auto mt-6 max-w-xl text-base text-white/60 md:text-lg">
+            Enterprise-grade infrastructure for game servers, websites, and
+            applications — without the enterprise price tag.
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
-              href="mailto:hello@pulsecompute.com"
-              className="inline-block px-8 py-4 bg-ink text-paper rounded-full text-sm font-medium hover:bg-accent transition-colors"
+              href="#pricing"
+              className="rounded-full bg-gradient-to-r from-[var(--color-violet)] to-[var(--color-pulse)] px-7 py-3 text-sm font-semibold shadow-[0_0_40px_-10px_var(--color-pulse)] hover:opacity-90 transition"
             >
-              hello@pulsecompute.com
+              View Plans
+            </a>
+            <a
+              href="#features"
+              className="rounded-full border border-white/15 px-7 py-3 text-sm font-medium hover:bg-white/5 transition"
+            >
+              Learn More
             </a>
           </div>
-          <div className="grid grid-cols-2 gap-20 text-sm">
-            <div className="space-y-4">
-              <p className="font-bold opacity-30 uppercase tracking-tighter">Social</p>
-              <a href="#" className="block hover:text-accent">
-                Instagram
-              </a>
-              <a href="#" className="block hover:text-accent">
-                Read.cv
-              </a>
-            </div>
-            <div className="space-y-4">
-              <p className="font-bold opacity-30 uppercase tracking-tighter">Studio</p>
-              <p>Remote / Worldwide</p>
-              <p>By Sehaj, est. 2024</p>
-            </div>
+        </div>
+
+        <div className="relative mx-auto mt-16 max-w-5xl">
+          <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[var(--color-void)] via-transparent to-transparent" />
+          <img
+            src={heroImg}
+            alt="PulseCompute server infrastructure"
+            className="w-full rounded-2xl border border-white/10 shadow-2xl"
+          />
+        </div>
+      </section>
+
+      {/* Features */}
+      <section id="features" className="px-6 py-20 md:px-12 md:py-28">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-14 text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-glow)]">
+              Why PulseCompute
+            </p>
+            <h2 className="font-display mt-3 text-3xl font-semibold md:text-5xl">
+              Built for performance. Priced for everyone.
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Lightning Fast",
+                desc: "NVMe SSDs and Ryzen 9 CPUs deliver sub-millisecond response times across every plan.",
+                icon: "⚡",
+              },
+              {
+                title: "DDoS Protected",
+                desc: "Enterprise-grade mitigation absorbs attacks up to 1 Tbps before they reach your server.",
+                icon: "🛡️",
+              },
+              {
+                title: "24/7 Support",
+                desc: "Real engineers — not bots — respond in under 5 minutes, any time of day.",
+                icon: "💬",
+              },
+              {
+                title: "Global Network",
+                desc: "Locations across NA, EU, and Asia keep your players and visitors close to home.",
+                icon: "🌐",
+              },
+              {
+                title: "Instant Deploy",
+                desc: "Your server is provisioned and online within 60 seconds of checkout.",
+                icon: "🚀",
+              },
+              {
+                title: "No Hidden Fees",
+                desc: "What you see is what you pay. No setup costs, no upgrade traps, no surprises.",
+                icon: "💎",
+              },
+            ].map((f) => (
+              <div
+                key={f.title}
+                className="group rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-sm transition hover:border-[var(--color-pulse)]/40 hover:bg-white/[0.04]"
+              >
+                <div className="mb-4 text-3xl">{f.icon}</div>
+                <h3 className="font-display text-xl font-semibold">{f.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" className="px-6 py-20 md:px-12 md:py-28">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-14 text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-[var(--color-glow)]">
+              Pricing
+            </p>
+            <h2 className="font-display mt-3 text-3xl font-semibold md:text-5xl">
+              Simple plans. Honest prices.
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              {
+                name: "Starter",
+                price: "3",
+                tagline: "For small projects",
+                features: ["2 GB RAM", "20 GB NVMe", "1 vCPU", "Unmetered bandwidth"],
+                highlight: false,
+              },
+              {
+                name: "Pulse",
+                price: "9",
+                tagline: "Most popular",
+                features: ["8 GB RAM", "80 GB NVMe", "4 vCPU", "DDoS Protection", "Priority support"],
+                highlight: true,
+              },
+              {
+                name: "Surge",
+                price: "24",
+                tagline: "Power users",
+                features: ["16 GB RAM", "200 GB NVMe", "8 vCPU", "Dedicated IP", "99.99% SLA"],
+                highlight: false,
+              },
+            ].map((p) => (
+              <div
+                key={p.name}
+                className={`relative rounded-2xl border p-7 backdrop-blur-sm transition ${
+                  p.highlight
+                    ? "border-[var(--color-pulse)]/60 bg-gradient-to-b from-[var(--color-violet)]/20 to-transparent shadow-[0_0_60px_-20px_var(--color-pulse)]"
+                    : "border-white/10 bg-white/[0.02]"
+                }`}
+              >
+                {p.highlight && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-[var(--color-violet)] to-[var(--color-pulse)] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider">
+                    Popular
+                  </span>
+                )}
+                <h3 className="font-display text-2xl font-semibold">{p.name}</h3>
+                <p className="text-sm text-white/50">{p.tagline}</p>
+                <div className="mt-6 flex items-baseline gap-1">
+                  <span className="text-sm text-white/50">$</span>
+                  <span className="font-display text-5xl font-semibold">{p.price}</span>
+                  <span className="text-sm text-white/50">/mo</span>
+                </div>
+                <ul className="mt-6 space-y-2.5 text-sm text-white/70">
+                  {p.features.map((feat) => (
+                    <li key={feat} className="flex items-center gap-2">
+                      <span className="text-[var(--color-glow)]">✓</span>
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="#contact"
+                  className={`mt-7 block rounded-full px-5 py-2.5 text-center text-sm font-semibold transition ${
+                    p.highlight
+                      ? "bg-gradient-to-r from-[var(--color-violet)] to-[var(--color-pulse)] hover:opacity-90"
+                      : "border border-white/15 hover:bg-white/5"
+                  }`}
+                >
+                  Choose {p.name}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section id="contact" className="px-6 py-20 md:px-12 md:py-28">
+        <div className="mx-auto max-w-4xl rounded-3xl border border-white/10 bg-gradient-to-br from-[var(--color-violet)]/30 to-[var(--color-midnight)] p-10 text-center md:p-16">
+          <h2 className="font-display text-3xl font-semibold md:text-5xl">
+            Ready to feel the pulse?
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-white/60">
+            Spin up your first server in under a minute. Cancel anytime — we'll
+            even refund unused time.
+          </p>
+          <a
+            href="#pricing"
+            className="mt-8 inline-block rounded-full bg-white px-8 py-3 text-sm font-semibold text-[var(--color-void)] hover:bg-white/90 transition"
+          >
+            Get Started — $3/mo
+          </a>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="border-t border-white/5 px-6 py-10 md:px-12">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-white/40 md:flex-row">
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="" className="h-6 w-6 object-contain" />
+            <span>© 2026 PulseCompute. Built by Sehaj.</span>
+          </div>
+          <div className="flex gap-6">
+            <a href="#" className="hover:text-white transition">Status</a>
+            <a href="#" className="hover:text-white transition">Discord</a>
+            <a href="#" className="hover:text-white transition">Terms</a>
           </div>
         </div>
       </footer>
